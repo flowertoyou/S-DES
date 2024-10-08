@@ -111,14 +111,20 @@ class ENCRIPTION():
 
 
 if __name__ == "__main__":
-    user_input_P = input("请输入明文：")
-    a = user_input_P.encode()
-    b = ''.join(format(byte,'08b')for byte in(a))
-    P = []
-    for bit in b:
-        P.append(ord(bit) - ord('0'))
-    machine = ENCRIPTION()
-    machine.SetKey()
-    print("密钥 K:", machine.K)
-    C = machine.Encryption(P)
-    print("加密结果为：", C)
+   user_input_P = input("请输入明文：")
+   a = user_input_P.encode()
+   b = ''.join(format(byte, '08b') for byte in (a))
+   print(b)
+   P = []
+   for bit in b:
+       P.append(ord(bit) - ord('0'))
+   print(P)
+   machine = ENCRIPTION()
+   machine.SetKey()
+   print("密钥 K:", machine.K)
+   C = machine.Encryption(P)
+   print(C)
+   m = ''.join(map(str, C))
+   print(m)
+   n = binary_string_to_chars(m)
+   print("加密结果为：", n)
