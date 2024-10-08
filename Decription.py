@@ -109,16 +109,18 @@ class DECRIPTION():
         return self.Decimal2BinaryList(SubstitutionBox[Row][Column])
 
 if __name__ == "__main__":
-
-    user_input_C = input("请输入密文：")
-    a = user_input_C.encode()
-    b = ''.join(format(byte, '08b') for byte in (a))
-    C = []
-    for bit in b:
-        C.append(ord(bit) - ord('0'))
-    user_input_K = input("请输入密钥：")
-    K = [int(bit) for bit in user_input_K]  # 转换为整型列表
-    machine = DECRIPTION()
-    machine.SetKey(K)
-    P = machine.Decryption(C)
-    print("解密结果为：", P)
+   user_input_C = input("请输入密文：")
+   C=[]
+   for bit in user_input_C:
+       C.append(ord(bit) - ord('0'))
+   print(C)
+   print(type(user_input_C))
+   user_input_K = input("请输入密钥：")
+   K = [int(bit) for bit in user_input_K]  # 转换为整型列表
+   machine = DECRIPTION()
+   machine.SetKey(K)
+   P = machine.Decryption(C)
+   m = ''.join(map(str, P))
+   print(m)
+   n = binary_string_to_chars(m)
+   print("解密结果为：", n)
